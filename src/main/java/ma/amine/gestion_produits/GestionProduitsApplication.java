@@ -22,16 +22,19 @@ public class GestionProduitsApplication {
             productRepository.save(Product.builder()
                     .name("TV")
                     .price(500.0)
+                    .quantity(1)
                     .build()
             );
             productRepository.save(Product.builder()
                     .name("Hello")
-                    .price(500.0)
+                    .price(26.0)
+                    .quantity(13)
                     .build()
             );
             productRepository.save(Product.builder()
                     .name("World")
-                    .price(500.0)
+                    .price(99.99)
+                    .quantity(156)
                     .build()
             );
 
