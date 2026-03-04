@@ -6,6 +6,7 @@ import ma.amine.gestion_produits.entity.Product;
 import ma.amine.gestion_produits.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -32,8 +33,11 @@ public class ProductController {
         return "new_product";
     }
 
-    @PostMapping("/new-product/add")
-    public String addProduct(@ModelAttribute @Valid Product product) {
+    @PostMapping("/new-product")
+    public String addProduct(@Valid Product product, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "new_product";
+        }
         productService.addProduct(product);
         return "redirect:/";
     }
