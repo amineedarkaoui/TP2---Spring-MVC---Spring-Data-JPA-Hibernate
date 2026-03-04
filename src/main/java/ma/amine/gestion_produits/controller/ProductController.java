@@ -1,6 +1,8 @@
 package ma.amine.gestion_produits.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import ma.amine.gestion_produits.entity.Product;
 import ma.amine.gestion_produits.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,18 @@ public class ProductController {
     @GetMapping("/delete")
     public String deleteProduct(@RequestParam("id") Long id) {
         productService.deleteProduct(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/new-product")
+    public String productForm(Model model) {
+        model.addAttribute("product", new Product());
+        return "new_product";
+    }
+
+    @PostMapping("/new-product/add")
+    public String addProduct(@ModelAttribute @Valid Product product) {
+        productService.addProduct(product);
         return "redirect:/";
     }
 }

@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.8/css/bootstrap.min.css">
 </head>
-<body>
+<body class="m-4">
     <h2>Products</h2>
-    <table>
+    <table class="table">
         <tr th:each="p : ${products}">
             <td th:text="${p.id}"></td>
             <td th:text="${p.name}"></td>
             <td th:text="${p.price}"></td>
             <td th:text="${p.quantity}"></td>
-            <td><a th:href="@{/delete(id=${p.id})}">Delete</a></td>
+            <td><a class="btn btn-danger" th:href="@{/delete(id=${p.id})}">Delete</a></td>
         </tr>
     </table>
+    <a class="btn btn-primary mt-2" th:href="@{/new-product}">+ New product</a>
 </body>
 </html>
