@@ -7,6 +7,10 @@
 </head>
 <body class="m-4">
     <h2>Products</h2>
+    <form method="get" th:action="@{/}">
+        <input type="text" id="search" name="search" class="nav-list-search" placeholder="Search for a product">
+        <input type="submit" class="btn btn-primary">
+    </form>
     <table class="table">
         <tr th:each="p : ${products}">
             <td th:text="${p.id}"></td>

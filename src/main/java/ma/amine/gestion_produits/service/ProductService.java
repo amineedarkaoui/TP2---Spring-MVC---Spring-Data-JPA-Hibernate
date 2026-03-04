@@ -1,12 +1,15 @@
 package ma.amine.gestion_produits.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import ma.amine.gestion_produits.entity.Product;
 import ma.amine.gestion_produits.repository.ProductRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -14,6 +17,10 @@ public class ProductService {
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    public List<Product> searchProducts(String search) {
+        return productRepository.findByNameContains(search);
     }
 
     public void deleteProduct(Long id) {

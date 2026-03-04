@@ -15,8 +15,8 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/")
-    public String listProducts(Model model) {
-        model.addAttribute("products", productService.getAllProducts());
+    public String listProducts(Model model, @RequestParam(value = "search", required = false) String search) {
+        model.addAttribute("products", productService.searchProducts(search));
 
         return "products";
     }
