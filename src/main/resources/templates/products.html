@@ -9,7 +9,7 @@
     <h2>Products</h2>
     <form method="get" th:action="@{/}">
         <input type="text" id="search" name="search" class="nav-list-search" placeholder="Search for a product">
-        <input type="submit" class="btn btn-primary">
+        <input type="submit" class="btn btn-primary" value="Search">
     </form>
     <table class="table">
         <tr th:each="p : ${products}">
@@ -17,6 +17,7 @@
             <td th:text="${p.name}"></td>
             <td th:text="${p.price}"></td>
             <td th:text="${p.quantity}"></td>
+            <td><a class="btn btn-outline-primary" th:href="@{/new-product(id=${p.id})}">Edit</a></td>
             <td><a class="btn btn-danger" th:href="@{/delete(id=${p.id})}">Delete</a></td>
         </tr>
     </table>

@@ -19,7 +19,12 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Product getProductById(Long id) {
+        return productRepository.findById(id).get();
+    }
+
     public List<Product> searchProducts(String search) {
+        search = search == null ? "" : search;
         return productRepository.findByNameContains(search);
     }
 
